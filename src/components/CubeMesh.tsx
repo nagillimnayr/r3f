@@ -6,12 +6,12 @@ import { ColorRepresentation, Mesh } from 'three';
 const CubeMesh = (props: { color: ColorRepresentation }) => {
   const meshRef = useRef<Mesh>(null!);
   const [isSelected, setSelected] = useState<boolean>(false);
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
     const timeStamp = clock.elapsedTime;
-    const delta = clock.getDelta() * 100;
 
     const sint = Math.sin(timeStamp);
     const cost = Math.cos(timeStamp);
+    const tant = Math.tan(timeStamp);
     // Rotate
     meshRef.current.rotation.x += delta * sint;
     meshRef.current.rotation.y += delta * cost;
