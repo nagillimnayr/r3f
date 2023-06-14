@@ -3,7 +3,11 @@ import { ThreeEvent, useFrame } from '@react-three/fiber';
 import React, { useRef, useState } from 'react';
 import { ColorRepresentation, Mesh } from 'three';
 
-const CubeMesh = (props: { color: ColorRepresentation }) => {
+type CubeProps = {
+  color: ColorRepresentation;
+  position: [number, number, number];
+};
+const CubeMesh = (props: CubeProps) => {
   const meshRef = useRef<Mesh>(null!);
   const [isSelected, setSelected] = useState<boolean>(false);
   const [isHovered, setHovered] = useState<boolean>(false);
@@ -39,6 +43,7 @@ const CubeMesh = (props: { color: ColorRepresentation }) => {
   return (
     <mesh
       ref={meshRef}
+      position={props.position}
       visible
       onClick={handleClick}
       onPointerOver={handlePointerOver}
