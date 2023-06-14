@@ -6,6 +6,8 @@ import { ColorRepresentation, Mesh } from 'three';
 const CubeMesh = (props: { color: ColorRepresentation }) => {
   const meshRef = useRef<Mesh>(null!);
   const [isSelected, setSelected] = useState<boolean>(false);
+  const [isHovered, setHovered] = useState<boolean>(false);
+
   useFrame(({ clock }, delta) => {
     const timeStamp = clock.elapsedTime;
 
@@ -28,10 +30,22 @@ const CubeMesh = (props: { color: ColorRepresentation }) => {
       : meshRef.current.scale.set(1, 1, 1);
     setSelected(!isSelected);
   };
+  const handlePointerOver = () => {
+    setHovered(true);
+  };
+  const handlePointerOut = () => {
+    setHovered(false);
+  };
   return (
-    <mesh ref={meshRef} visible onClick={handleClick}>
+    <mesh
+      ref={meshRef}
+      visible
+      onClick={handleClick}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    >
       <boxBufferGeometry />
-      <meshBasicMaterial color={props.color} />
+      <meshStandardMaterial color={isHovered ? 'hotpink' : props.color} />
       <Trail target={meshRef} length={4} decay={0.1} width={1}></Trail>
       <Edges scale={1.05} threshold={15} color={'white'} />
     </mesh>
