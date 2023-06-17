@@ -15,7 +15,7 @@ import Scene from './Scene';
 
 const CanvasHolder = () => {
   return (
-    <div className="min-w-96 min-h-fit w-[1200px] flex flex-col justify-start items-center border-2 border-red-500">
+    <div className="min-w-96 min-h-fit w-[1200px] flex flex-col justify-start items-center mt-20 border-2 border-red-500">
       <div className="min-w-full h-[800px] border-2 border-blue-500">
         <Canvas gl={{ logarithmicDepthBuffer: true }}>
           <XR>
