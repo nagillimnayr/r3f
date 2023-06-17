@@ -3,7 +3,7 @@ import CanvasHolder from './components/CanvasHolder';
 
 const App = () => {
   return (
-    <div id="App">
+    <div className="flex w-vw h-vh flex-col justify-start items-center">
       <CanvasHolder />
     </div>
   );
