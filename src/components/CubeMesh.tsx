@@ -2,6 +2,7 @@ import { Edges, Trail } from '@react-three/drei';
 import { ThreeEvent, useFrame } from '@react-three/fiber';
 import React, { useRef, useState } from 'react';
 import { ColorRepresentation, Mesh } from 'three';
+import { proxyState } from '../state/ProxyState';
 
 type CubeProps = {
   color: ColorRepresentation;
@@ -33,6 +34,7 @@ const CubeMesh = (props: CubeProps) => {
       ? meshRef.current.scale.set(2, 2, 2)
       : meshRef.current.scale.set(1, 1, 1);
     setSelected(!isSelected);
+    proxyState.setTarget(meshRef.current);
   };
   const handlePointerOver = () => {
     setHovered(true);
