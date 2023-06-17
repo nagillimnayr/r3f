@@ -3,7 +3,6 @@ import CubeMesh from './CubeMesh';
 import { SphereMesh } from './SphereMesh';
 import { InvertSphere } from './InvertSphere';
 import { Bounds, CameraControls, PerspectiveCamera } from '@react-three/drei';
-import { ZoomOnClick } from './ZoomOnClick';
 import { proxyState } from '../state/ProxyState';
 
 const Scene = () => {
